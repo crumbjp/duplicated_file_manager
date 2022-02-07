@@ -78,7 +78,7 @@ console.log('Already', file.path)
           if(byHash && byHash.path != file.path) {
             // Duplicated
             console.log(`Duplicated ${byHash.path} => ${file.path}`);
-            scriptLog(`rm ${file.path}`);
+            scriptLog(`rm '${file.path}'`);
           }
           if(byPath && byPath.hash != file.hash) {
             // Replaced
