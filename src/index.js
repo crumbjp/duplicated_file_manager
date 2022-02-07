@@ -146,7 +146,10 @@ const walkDirectory = (directory) => {
           }
         }
         let bulkResults = await bulk.execute({w: 1, wtimeout: 3600000});
-        console.log(bulkResults)
+        let bulkErrors = _.chain(bulkResults).map((bulkResult) => bulkResult.writeErrors).flatten();
+        if(bulkErrors.length > 0) {
+          console.log(bulkErrors);
+        }
       }
       for(let fullPath of directories) {
         await walkDirectory(fullPath);
