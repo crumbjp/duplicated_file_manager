@@ -132,7 +132,7 @@ const walkDirectory = (directory) => {
         }
       }
       let changes = await manageFiles(files);
-      let BULK_SIZE = 1;
+      let BULK_SIZE = 100;
       for(let partialChanges of _.chunk(changes, BULK_SIZE)) {
         let bulk = FileHash.collection.initializeUnorderedBulkOp({w: 1, j:1, wtimeout: 3600000});
         if(!bulk) {
