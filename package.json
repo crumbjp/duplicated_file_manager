@@ -1,0 +1,30 @@
+{
+  "name": "duplicated_file_manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/crumbjp/duplicated_file_manager.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crumbjp/duplicated_file_manager/issues"
+  },
+  "homepage": "https://github.com/crumbjp/duplicated_file_manager#readme",
+  "dependencies": {
+    "async": "^2.6.1",
+    "hasha": "^5.2.2",
+    "lodash": "^4.17.21",
+    "moment": "^2.23.0",
+    "moment-duration-format": "^2.2.2",
+    "mongoose": "^5.13.13",
+    "opts": "^2.0.2",
+    "pluralize": "^7.0.0",
+    "sha1": "^1.1.1"
+  }
+}
