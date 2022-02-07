@@ -24,11 +24,15 @@ const dotLog = (line) => {
   fs.writeSync(dotLogFile, line + "\n");
 };
 
+let manageLogFile = fs.openSync('./log/manage.log', 'w');
+const manageLog = (line) => {
+  fs.writeSync(manageLogFile, line + "\n");
+};
+
 let scriptFile = fs.openSync('./log/script.sh', 'w');
 const scriptLog = (line) => {
   fs.writeSync(scriptFile, line + "\n");
 };
-scriptLog('!/usr/bin/env bash');
 scriptLog('set -e');
 
 const manageFiles = (files) => {
@@ -71,18 +75,15 @@ const manageFiles = (files) => {
             obj: file,
           });
         } else if(byHash == byPath) {
-          //   // Already
-          //   // Do nothing
-console.log('Already', file.path)
+          manageLog(`Already ${file.path}`);
+          // Do nothing
         } else {
           if(byHash && byHash.path != file.path) {
-            // Duplicated
-            console.log(`Duplicated ${byHash.path} => ${file.path}`);
+            manageLog(`Duplicated ${byHash.path} <= ${file.path}`);
             scriptLog(`rm '${file.path}'`);
           }
           if(byPath && byPath.hash != file.hash) {
-            // Replaced
-console.log(`Replaced $${file.path}`);
+            manageLog(`Replaced ${file.path}`);
             changes.push({
               op: 'update',
               find: {
@@ -166,6 +167,7 @@ const walkDirectory = (directory) => {
   await walkDirectory(directory);
   console.log(`=== End ${directory}`);
   fs.closeSync(dotLogFile);
+  fs.closeSync(manageLogFile);
   fs.closeSync(scriptFile);
   process.exit(1);
 })();

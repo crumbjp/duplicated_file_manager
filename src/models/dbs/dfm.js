@@ -14,6 +14,6 @@ schemas.file_hash = new mongoose.Schema({
   path          : { type: String},
 });
 /*
- db.file_hashes.createIndex({hash: 1, uniq: 1});
- db.file_hashes.createIndex({path: 1, uniq: 1});
+ db.file_hashes.createIndex({hash: 1}, {uniq: 1});
+ db.file_hashes.createIndex({path: 1}, {uniq: 1});
  */
